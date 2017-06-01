@@ -31,6 +31,6 @@ RUN sudo -i -u rstudio git clone  https://github.com/BenGraeler/spcopula.git /ho
 RUN sudo R CMD build --no-build-vignettes /home/rstudio/GitRepos/spcopula
 RUN sudo R CMD INSTALL spcopula_0.2-4.tar.gz
 RUN sudo -i -u rstudio git clone  https://bitbucket.com/ben_graeler/geo-bridge-stats.git /home/rstudio/GitRepos/geo-bridge-stats
-RUN sudo -i -u rstudio git clone  https://github.com/BenGraeler/copulatheque.git /home/rstudio/GitRepos/copulatheque
+RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/copulatheque.git /home/rstudio/GitRepos/copulatheque
 
 COPY   shiny-server.conf /etc/shiny-server/shiny-server.conf
