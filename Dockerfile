@@ -19,7 +19,7 @@ RUN sudo su -c "R -e \"install.packages('rgdal', repos='https://cran.rstudio.com
 
 # install copula packages
 RUN sudo su -c "R -e \"install.packages('copula', repos='https://cran.rstudio.com/')\""
-RUN sudo su -c "R -e \"install.packages('VineCopula', repos='https://cran.rstudio.com/')\""
+# RUN sudo su -c "R -e \"install.packages('VineCopula', repos='https://cran.rstudio.com/')\""
 
 # add dev R packages
 RUN sudo su -c "R -e \"install.packages('devtools', repos='https://cran.rstudio.com/')\""
