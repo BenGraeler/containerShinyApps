@@ -10,7 +10,7 @@ RUN sudo apt-get update
 RUN sudo apt-get install -y nano
 RUN sudo apt-get install -y libgsl0-dev
 RUN sudo apt-get install -y build-essential
-RUN sudo apt-get install -y libgdal20
+RUN sudo apt-get install -y libgdal-dev
 RUN sudo apt-get install -y libudunits2-dev
 
 # add spatial R packages from CRAN
