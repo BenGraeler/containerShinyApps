@@ -10,9 +10,12 @@ RUN sudo apt-get update
 RUN sudo apt-get install -y nano
 RUN sudo apt-get install -y libgsl0-dev
 RUN sudo apt-get install -y build-essential
+RUN sudo apt-get install -y libgdal20
+RUN sudo apt-get install -y libudunits2-0
 
 # add spatial R packages from CRAN
 RUN sudo su -c "R -e \"install.packages('sp', repos='https://cran.rstudio.com/')\""
+RUN sudo su -c "R -e \"install.packages('sf', repos='https://cran.rstudio.com/')\""
 RUN sudo su -c "R -e \"install.packages('spacetime', repos='https://cran.rstudio.com/')\""
 RUN sudo su -c "R -e \"install.packages('gstat', repos='https://cran.rstudio.com/')\""
 RUN sudo su -c "R -e \"install.packages('rgdal', repos='https://cran.rstudio.com/')\""
@@ -27,10 +30,11 @@ COPY initPackages.R /home/rstudio/initPackages.R
 RUN sudo su -c "R -e \"source('/home/rstudio/initPackages.R')\""
 # set-up GitRepos
 RUN sudo -i -u rstudio mkdir /home/rstudio/GitRepos
+RUN sudo -i -u rstudio mkdir /home/rstudio/GitRepos/demos
 
 # clone copula repos - will be pulled on startup of the container
-RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/spcopula.git /home/rstudio/GitRepos/spcopula
-RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/VineCopula.git /home/rstudio/GitRepos/VineCopula
+RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/spcopula /home/rstudio/GitRepos/spcopula
+RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/VineCopula /home/rstudio/GitRepos/VineCopula
 
 RUN sudo -i -u rstudio git clone https://bitbucket.com/ben_graeler/geo-bridge-stats.git /home/rstudio/GitRepos/geo-bridge-stats
 RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/copulatheque.git /home/rstudio/GitRepos/copulatheque
