@@ -21,6 +21,7 @@ RUN sudo su -c "R -e \"install.packages('rgdal', repos='https://cran.rstudio.com
 RUN sudo su -c "R -e \"install.packages('copula', repos='https://cran.rstudio.com/')\""
 
 # add dev R packages
+RUN sudo apt-get install -y zlib1g-dev
 RUN sudo su -c "R -e \"install.packages('devtools', repos='https://cran.rstudio.com/')\""
 COPY initPackages.R /home/rstudio/initPackages.R
 RUN sudo su -c "R -e \"source('/home/rstudio/initPackages.R')\""
@@ -33,8 +34,9 @@ RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/VineCopula.git /h
 
 RUN sudo -i -u rstudio git clone https://bitbucket.com/ben_graeler/geo-bridge-stats.git /home/rstudio/GitRepos/geo-bridge-stats
 RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/copulatheque.git /home/rstudio/GitRepos/copulatheque
+RUN sudo -i -u rstudio git clone https://github.com/BenGraeler/demos.git /home/rstudio/GitRepos/demos
 
-COPY  initPackages.sh /home/rstudio/initPackages.sh
+COPY initPackages.sh /home/rstudio/initPackages.sh
 COPY shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 RUN chmod +777 /home/rstudio/initPackages.sh
