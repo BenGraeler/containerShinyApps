@@ -11,7 +11,7 @@ RUN sudo apt-get install -y nano
 RUN sudo apt-get install -y libgsl0-dev
 RUN sudo apt-get install -y build-essential
 RUN sudo apt-get install -y libgdal20
-RUN sudo apt-get install -y libudunits2-0
+RUN sudo apt-get install -y libudunits2-dev
 
 # add spatial R packages from CRAN
 RUN sudo su -c "R -e \"install.packages('sp', repos='https://cran.rstudio.com/')\""
@@ -19,6 +19,7 @@ RUN sudo su -c "R -e \"install.packages('sf', repos='https://cran.rstudio.com/')
 RUN sudo su -c "R -e \"install.packages('spacetime', repos='https://cran.rstudio.com/')\""
 RUN sudo su -c "R -e \"install.packages('gstat', repos='https://cran.rstudio.com/')\""
 RUN sudo su -c "R -e \"install.packages('rgdal', repos='https://cran.rstudio.com/')\""
+RUN sudo su -c "R -e \"install.packages('leaflet', repos='https://cran.rstudio.com/')\""
 
 # install copula packages
 RUN sudo su -c "R -e \"install.packages('copula', repos='https://cran.rstudio.com/')\""
