@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# geo-bridge
+mkdir /home/rstudio/GitRepos/geo-bridge-stats
+git clone https://bitbucket.com/ben_graeler/geo-bridge-stats.git
+
 # pull app repositories
 cd /home/rstudio/GitRepos/copulatheque
 git pull
@@ -22,4 +26,4 @@ R CMD build --no-build-vignettes spcopula
 find ./ -name "spcopula*.tar.gz" -cmin -5 -print0 | xargs -0 R CMD INSTALL
 
 # from rstudio Dockerfile CMD
-/init
+/usr/bin/shiny-server.sh
